@@ -1,10 +1,29 @@
+function resolveSiteUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configured) {
+    try {
+      return new URL(configured).origin;
+    } catch {
+      // Ignore invalid env values and fall through.
+    }
+  }
+
+  const vercel = process.env.VERCEL_URL?.trim();
+  if (vercel) {
+    const host = vercel.replace(/^https?:\/\//, "");
+    return `https://${host}`;
+  }
+
+  return "http://localhost:3000";
+}
+
 export const site = {
   name: "Infotainment Academy",
   shortName: "IA",
   tagline: "Worlds you can step into",
   description:
     "Infotainment Academy builds cinematic games, AR/VR experiences, and architectural worlds for studios, brands, and live events.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: resolveSiteUrl(),
   email: "hello@infotainmentacademy.example",
   phone: "+1 (415) 555-0148",
   address: "Studio 12, Harbor Lofts, San Francisco",

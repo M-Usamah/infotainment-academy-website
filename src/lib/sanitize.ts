@@ -31,9 +31,17 @@ export function isAllowedOrigin(request: Request): boolean {
     if (host && originHost === host) {
       return true;
     }
-    const configured = process.env.NEXT_PUBLIC_SITE_URL;
+    const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
     if (configured) {
-      return originHost === new URL(configured).host;
+      try {
+        return originHost === new URL(configured).host;
+      } catch {
+        return false;
+      }
+    }
+    const vercel = process.env.VERCEL_URL?.trim();
+    if (vercel) {
+      return originHost === vercel.replace(/^https?:\/\//, "");
     }
   } catch {
     return false;
