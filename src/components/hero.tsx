@@ -1,21 +1,12 @@
 import Link from "next/link";
+import { HeroVideo } from "@/components/hero-video";
 import { site } from "@/lib/site";
 
 export function Hero() {
   return (
     <section className="grain relative isolate min-h-screen overflow-hidden">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden
-      >
-        <source src="/videos/shogen_game_demo.mp4?v=20260920-h264" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-[#07080c]" />
+      <HeroVideo />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-[#07080c]" />
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-20 pt-36 sm:px-6">
         <p className="text-sm tracking-[0.35em] text-gold uppercase">Infotainment Academy</p>
         <h1 className="font-display mt-4 max-w-4xl text-5xl leading-[0.95] font-semibold tracking-tight text-balance sm:text-7xl">
