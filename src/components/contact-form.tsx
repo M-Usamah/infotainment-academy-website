@@ -102,7 +102,7 @@ export function ContactForm() {
           maxLength={4000}
           value={values.message}
           onChange={(event) => setValues({ ...values, message: event.target.value })}
-          className="rounded-2xl border border-line bg-black/30 px-4 py-3 text-base outline-none focus:border-gold"
+          className="rounded-2xl border border-line bg-depth/40 px-4 py-3 text-base outline-none focus:border-action"
         />
         {errors.message ? <span className="text-danger">{errors.message}</span> : null}
       </label>
@@ -114,7 +114,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="rounded-full bg-gold px-6 py-3 font-semibold text-white disabled:opacity-60"
+        className="rounded-full bg-action px-6 py-3 font-semibold text-white disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Get in touch"}
       </button>
@@ -147,7 +147,7 @@ function Field({
         required={required}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="rounded-2xl border border-line bg-black/30 px-4 py-3 text-base outline-none focus:border-gold"
+        className="rounded-2xl border border-line bg-depth/40 px-4 py-3 text-base outline-none focus:border-action"
       />
       {error ? <span className="text-danger">{error}</span> : null}
     </label>

@@ -23,7 +23,7 @@ export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
             onClick={() => setFilter(item)}
             className={`rounded-full px-4 py-2 text-sm ${
               filter === item
-                ? "bg-gold text-white"
+                ? "bg-action text-white"
                 : "border border-line text-muted hover:text-ink"
             }`}
           >
@@ -48,7 +48,7 @@ export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
               />
             </div>
             <div className="p-5">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase">{project.category}</p>
+              <p className="text-xs tracking-[0.2em] text-signal uppercase">{project.category}</p>
               <h3 className="font-display mt-2 text-2xl">{project.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{project.summary}</p>
             </div>

@@ -9,7 +9,7 @@ export function NewsPreview() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading eyebrow="News" title="In the headline" />
-          <Link href="/news" className="text-sm text-gold">
+          <Link href="/news" className="text-sm text-action">
             All news →
           </Link>
         </div>

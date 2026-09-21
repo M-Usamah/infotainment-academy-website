@@ -42,17 +42,17 @@ export default async function ServiceDetailPage({
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-[#07080c]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-depth/40 to-bg" />
         <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6">
-          <p className="text-xs tracking-[0.28em] text-gold uppercase">{service.kicker}</p>
-          <h1 className="font-display mt-4 max-w-4xl text-5xl font-semibold">{service.title}</h1>
+          <p className="text-xs tracking-[0.28em] text-signal uppercase">{service.kicker}</p>
+          <h1 className="font-display mt-4 max-w-4xl text-5xl font-semibold text-white">{service.title}</h1>
           <p className="mt-5 max-w-2xl text-lg text-white/80">{service.summary}</p>
         </div>
       </section>
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className="text-lg leading-8 text-muted">{service.description}</p>
-          <Link href="/portfolio" className="mt-8 inline-block text-gold">
+          <Link href="/portfolio" className="mt-8 inline-block text-action">
             See related work →
           </Link>
         </div>

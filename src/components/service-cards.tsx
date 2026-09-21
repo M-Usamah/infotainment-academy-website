@@ -21,11 +21,11 @@ export function ServiceCards() {
             >
               <div className="flex flex-col justify-between p-8">
                 <div>
-                  <p className="text-xs tracking-[0.24em] text-gold uppercase">{service.kicker}</p>
+                  <p className="text-xs tracking-[0.24em] text-signal uppercase">{service.kicker}</p>
                   <h3 className="font-display mt-3 text-3xl">{service.title}</h3>
                   <p className="mt-3 max-w-xl text-muted">{service.summary}</p>
                 </div>
-                <span className="mt-8 text-sm text-gold">View projects →</span>
+                <span className="mt-8 text-sm text-action">View projects →</span>
               </div>
               <div className="relative min-h-52">
                 <Image

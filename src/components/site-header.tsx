@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -14,12 +15,17 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link
           href="/"
-          className="panel flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold tracking-wide"
+          className="panel flex items-center gap-2 rounded-full px-2.5 py-2 text-sm font-semibold tracking-wide"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-gold text-sm font-bold text-white">
-            I
-          </span>
-          <span className="font-display">{site.name}</span>
+          <Image
+            src="/logo.jpg"
+            alt={`${site.name} logo`}
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-full object-contain bg-white p-0.5"
+            priority
+          />
+          <span className="font-display pr-1">{site.name}</span>
         </Link>
 
         <nav className="panel hidden items-center gap-1 rounded-full px-2 py-2 lg:flex">
@@ -33,7 +39,7 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={`rounded-full px-3 py-1.5 text-sm transition ${
-                  active ? "bg-white/10 text-ink" : "text-muted hover:text-ink"
+                  active ? "bg-action text-white" : "text-muted hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -45,7 +51,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/contact"
-            className="hidden rounded-full bg-gold px-4 py-2 text-sm font-semibold text-white transition hover:bg-gold-strong sm:inline-flex"
+            className="hidden rounded-full bg-action px-4 py-2 text-sm font-semibold text-white transition hover:bg-action-strong sm:inline-flex"
           >
             Let&apos;s talk
           </Link>
@@ -62,10 +68,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div
-          id="mobile-nav"
-          className="panel mx-4 mb-4 rounded-3xl p-4 lg:hidden"
-        >
+        <div id="mobile-nav" className="panel mx-4 mb-4 rounded-3xl p-4 lg:hidden">
           <nav className="grid gap-1">
             {navLinks.map((link) => (
               <Link
@@ -79,7 +82,7 @@ export function SiteHeader() {
             ))}
             <Link
               href="/contact"
-              className="mt-2 rounded-full bg-gold px-4 py-3 text-center font-semibold text-white"
+              className="mt-2 rounded-full bg-action px-4 py-3 text-center font-semibold text-white"
               onClick={() => setOpen(false)}
             >
               Book a strategy call

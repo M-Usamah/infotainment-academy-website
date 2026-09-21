@@ -1,27 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #07080c;
-  --bg-elevated: #10131a;
-  --bg-soft: #161b24;
-  --line: rgba(244, 238, 224, 0.12);
-  --gold: #e11602;
-  --gold-strong: #ff2a14;
-  --mist: #d7efe8;
-  --text: #f6f1e6;
-  --muted: #a9a395;
+  /* Structure — navy */
+  --bg: #071428;
+  --bg-elevated: #0c1d3a;
+  --bg-soft: #122848;
+  --depth: #040b18;
+  --line: rgba(255, 255, 255, 0.14);
+
+  /* Action — red (CTAs, active, logo mark) */
+  --action: #e11602;
+  --action-strong: #ff2a14;
+
+  /* Signal — orange (labels, dividers, accents) */
+  --signal: #f36b1c;
+  --signal-strong: #ff8533;
+
+  /* Clean — white / soft white */
+  --ink: #ffffff;
+  --muted: #b7c3d9;
+
+  /* Keep legacy aliases used by existing utility classes */
+  --gold: var(--action);
+  --gold-strong: var(--action-strong);
+  --mist: #d7e6ff;
   --danger: #ff8b7b;
+  --text: var(--ink);
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-elevated: var(--bg-elevated);
   --color-soft: var(--bg-soft);
+  --color-depth: var(--depth);
   --color-line: var(--line);
-  --color-gold: var(--gold);
-  --color-gold-strong: var(--gold-strong);
+  --color-action: var(--action);
+  --color-action-strong: var(--action-strong);
+  --color-signal: var(--signal);
+  --color-signal-strong: var(--signal-strong);
+  --color-gold: var(--action);
+  --color-gold-strong: var(--action-strong);
   --color-mist: var(--mist);
-  --color-ink: var(--text);
+  --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-danger: var(--danger);
   --font-sans: var(--font-outfit);
@@ -33,14 +53,17 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(243, 107, 28, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 10% 20%, rgba(225, 22, 2, 0.1), transparent 50%),
+    var(--bg);
+  color: var(--ink);
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--gold) 35%, transparent);
-  color: var(--text);
+  background: color-mix(in srgb, var(--action) 40%, transparent);
+  color: var(--ink);
 }
 
 .font-display {
@@ -56,13 +79,9 @@ body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  opacity: 0.14;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.gold-border {
-  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
 }
 
 .panel {
@@ -76,7 +95,7 @@ body {
   left: 1rem;
   top: -4rem;
   z-index: 80;
-  background: var(--gold);
+  background: var(--action);
   color: #ffffff;
   padding: 0.6rem 1rem;
   font-weight: 600;

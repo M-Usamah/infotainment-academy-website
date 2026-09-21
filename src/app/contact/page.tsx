@@ -21,7 +21,7 @@ export default function ContactPage() {
           <h2 className="font-display text-3xl">Studio</h2>
           <p className="mt-4 text-muted">{site.address}</p>
           <p className="mt-4">
-            <a className="text-gold" href={`mailto:${site.email}`}>
+            <a className="text-action" href={`mailto:${site.email}`}>
               {site.email}
             </a>
           </p>

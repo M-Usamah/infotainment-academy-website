@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <p>
         Essential cookies remember cookie-banner choice. Analytics and advertising cookies are not loaded
         on this site. Questions:{" "}
-        <a className="text-gold" href={`mailto:${site.email}`}>
+        <a className="text-action" href={`mailto:${site.email}`}>
           {site.email}
         </a>
         .

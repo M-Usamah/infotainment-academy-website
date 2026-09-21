@@ -51,7 +51,7 @@ export default function AboutPage() {
               </div>
               <div className="p-5">
                 <h3 className="font-display text-2xl">{member.name}</h3>
-                <p className="text-sm text-gold">{member.role}</p>
+                <p className="text-sm text-signal">{member.role}</p>
                 <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p>
               </div>
             </article>

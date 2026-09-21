@@ -32,7 +32,7 @@ export function CookieBanner() {
       <p className="mt-2 text-sm leading-6 text-muted">
         This site uses a single essential preference cookie so we can remember your choice.
         We do not load advertising trackers. Read the{" "}
-        <Link href="/cookies" className="text-gold underline-offset-2 hover:underline">
+        <Link href="/cookies" className="text-action underline-offset-2 hover:underline">
           cookie policy
         </Link>
         .
@@ -40,7 +40,7 @@ export function CookieBanner() {
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
-          className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-white"
+          className="rounded-full bg-action px-4 py-2 text-sm font-semibold text-white"
           onClick={() => choose("accepted")}
         >
           Accept

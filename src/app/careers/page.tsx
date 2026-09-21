@@ -32,7 +32,7 @@ export default function CareersPage() {
               </p>
               <p className="mt-3 max-w-2xl text-muted">{job.summary}</p>
             </div>
-            <span className="text-gold">View role →</span>
+            <span className="text-action">View role →</span>
           </Link>
         ))}
       </section>

@@ -6,7 +6,7 @@ export function StatsBand() {
       <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label}>
-            <p className="font-display text-5xl text-gold">{stat.value}</p>
+            <p className="font-display text-5xl text-signal">{stat.value}</p>
             <p className="mt-2 text-sm tracking-wide text-muted uppercase">{stat.label}</p>
           </div>
         ))}

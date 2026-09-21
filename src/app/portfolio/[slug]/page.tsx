@@ -37,10 +37,10 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 to-[#07080c]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-depth/35 to-bg" />
         <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6">
-          <p className="text-xs tracking-[0.28em] text-gold uppercase">{project.category}</p>
-          <h1 className="font-display mt-4 text-5xl font-semibold">{project.title}</h1>
+          <p className="text-xs tracking-[0.28em] text-signal uppercase">{project.category}</p>
+          <h1 className="font-display mt-4 text-5xl font-semibold text-white">{project.title}</h1>
           <p className="mt-4 text-white/75">
             {project.client} · {project.year}
           </p>
