@@ -1,71 +1,58 @@
+"""Crop the source logo tightly; keep the original white field (no destructive matting)."""
+
 from pathlib import Path
+
 from PIL import Image
 
-src = Path(
+SRC = Path(
     r"C:\Users\usamah\.cursor\projects\c-Users-usamah-Documents-Project-infotainment-academy-website\assets\c__Users_usamah_AppData_Roaming_Cursor_User_workspaceStorage_63e06252ec06d92bd5d5cb694bd013fd_images_image-b0c28013-040c-4fcc-8acc-9ac98da468a5.png"
 )
-out_dir = Path(r"C:\Users\usamah\Documents\Project\infotainment-academy-website\public")
-
-img = Image.open(src).convert("RGBA")
-w, h = img.size
-pixels = img.load()
-
-corners = [pixels[0, 0], pixels[w - 1, 0], pixels[0, h - 1], pixels[w - 1, h - 1]]
-print("corners", corners)
+OUT = Path(r"C:\Users\usamah\Documents\Project\infotainment-academy-website\public")
 
 
-def is_bg(px, tol=28):
-    r, g, b, a = px
-    if a < 10:
-        return True
-    mx, mn = max(r, g, b), min(r, g, b)
-    if r > 210 and g > 210 and b > 210 and (mx - mn) < 25:
-        return True
-    for cr, cg, cb, _ca in corners:
-        if abs(r - cr) <= tol and abs(g - cg) <= tol and abs(b - cb) <= tol:
-            return True
-    return False
+def main() -> None:
+    img = Image.open(SRC).convert("RGBA")
+    w, h = img.size
+    px = img.load()
+
+    # Content bbox: anything not near-paper-white
+    minx, miny, maxx, maxy = w, h, 0, 0
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            if a < 10:
+                continue
+            if r >= 250 and g >= 250 and b >= 250 and max(r, g, b) - min(r, g, b) <= 6:
+                continue
+            minx = min(minx, x)
+            miny = min(miny, y)
+            maxx = max(maxx, x)
+            maxy = max(maxy, y)
+
+    pad = 24
+    crop = img.crop(
+        (
+            max(0, minx - pad),
+            max(0, miny - pad),
+            min(w, maxx + 1 + pad),
+            min(h, maxy + 1 + pad),
+        )
+    )
+
+    # Flatten onto pure white for a clean plate
+    flat = Image.new("RGB", crop.size, (255, 255, 255))
+    flat.paste(crop, mask=crop.split()[-1])
+    flat.save(OUT / "logo.png", "PNG", optimize=True)
+
+    # Dark preview plate (for reference only)
+    dark = Image.new("RGB", crop.size, (0, 0, 0))
+    # Keep white plate inset so preview matches site usage
+    inset = 0
+    dark.paste(flat, (inset, inset))
+    dark.save(OUT / "logo-black.png", "PNG", optimize=True)
+
+    print("saved", flat.size)
 
 
-visited = [[False] * w for _ in range(h)]
-stack = []
-for x in range(w):
-    stack.append((x, 0))
-    stack.append((x, h - 1))
-for y in range(h):
-    stack.append((0, y))
-    stack.append((w - 1, y))
-
-while stack:
-    x, y = stack.pop()
-    if x < 0 or y < 0 or x >= w or y >= h or visited[y][x]:
-        continue
-    visited[y][x] = True
-    if not is_bg(pixels[x, y]):
-        continue
-    pixels[x, y] = (0, 0, 0, 0)
-    stack.extend([(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)])
-
-bbox = img.getbbox()
-if not bbox:
-    raise SystemExit("No content found after bg removal")
-
-pad = 12
-l, t, r, b = bbox
-l = max(0, l - pad)
-t = max(0, t - pad)
-r = min(w, r + pad)
-b = min(h, b + pad)
-cropped = img.crop((l, t, r, b))
-
-transparent_path = out_dir / "logo.png"
-cropped.save(transparent_path, "PNG")
-
-black = Image.new("RGBA", cropped.size, (0, 0, 0, 255))
-black.alpha_composite(cropped)
-black_path = out_dir / "logo-black.png"
-black.convert("RGB").save(black_path, "PNG")
-
-print("saved", transparent_path, cropped.size)
-print("saved", black_path, black.size)
-print("bbox", bbox)
+if __name__ == "__main__":
+    main()
