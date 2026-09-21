@@ -12,9 +12,9 @@ export function SiteFooter() {
             <Image
               src="/logo.png"
               alt={`${site.name} logo`}
-              width={168}
-              height={152}
-              className="h-14 w-auto rounded-2xl bg-white object-contain p-2"
+              width={200}
+              height={180}
+              className="h-16 w-auto rounded-2xl bg-white object-contain p-2"
             />
           </div>
           <p className="mt-3 max-w-xs text-sm leading-6 text-muted">

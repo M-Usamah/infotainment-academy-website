@@ -15,14 +15,14 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link
           href="/"
-          className="flex shrink-0 items-center rounded-2xl bg-white px-2.5 py-2 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+          className="flex shrink-0 items-center rounded-2xl bg-white p-1.5 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
         >
           <Image
-            src="/logo.png"
+            src="/logo-mark.png"
             alt={`${site.name} logo`}
-            width={152}
-            height={138}
-            className="h-11 w-auto object-contain sm:h-12"
+            width={72}
+            height={72}
+            className="h-11 w-11 object-contain sm:h-12 sm:w-12"
             priority
           />
           <span className="sr-only">{site.name}</span>
