@@ -13,15 +13,19 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-        <Link href="/" className="flex shrink-0 items-center">
+        <Link href="/" className="flex shrink-0 items-center gap-3">
           <Image
             src="/logo-mark-light.png"
-            alt={`${site.name} logo`}
+            alt=""
             width={112}
             height={112}
-            className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+            className="h-11 w-11 object-contain sm:h-12 sm:w-12"
             priority
           />
+          <span className="font-display text-sm leading-tight font-semibold tracking-tight text-ink sm:text-base">
+            Infotainment
+            <span className="block text-signal">Academy</span>
+          </span>
           <span className="sr-only">{site.name}</span>
         </Link>
 
@@ -36,7 +40,9 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={`rounded-full px-3 py-1.5 text-sm transition ${
-                  active ? "bg-action text-white" : "text-muted hover:text-ink"
+                  active
+                    ? "bg-action text-white shadow-[0_6px_20px_var(--glow-action)]"
+                    : "text-muted hover:bg-white/5 hover:text-ink"
                 }`}
               >
                 {link.label}
@@ -48,7 +54,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/contact"
-            className="hidden rounded-full bg-action px-4 py-2 text-sm font-semibold text-white transition hover:bg-action-strong sm:inline-flex"
+            className="btn-action hidden rounded-full px-4 py-2 text-sm font-semibold sm:inline-flex"
           >
             Let&apos;s talk
           </Link>

@@ -17,7 +17,7 @@ export function ServiceCards() {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group grid overflow-hidden rounded-[1.6rem] border border-line bg-elevated md:grid-cols-[1.1fr_1fr]"
+              className="surface-card group grid overflow-hidden rounded-[1.6rem] md:grid-cols-[1.1fr_1fr]"
             >
               <div className="flex flex-col justify-between p-8">
                 <div>

@@ -1,29 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  /* Structure — navy */
-  --bg: #071428;
-  --bg-elevated: #0c1d3a;
-  --bg-soft: #122848;
-  --depth: #040b18;
-  --line: rgba(255, 255, 255, 0.14);
+  /* Structure — deeper midnight navy */
+  --bg: #050f22;
+  --bg-elevated: #0a1a36;
+  --bg-soft: #143056;
+  --depth: #020812;
+  --line: rgba(196, 214, 255, 0.14);
 
-  /* Action — red (CTAs, active, logo mark) */
+  /* Action — brand red */
   --action: #e11602;
-  --action-strong: #ff2a14;
+  --action-strong: #ff3b22;
 
-  /* Signal — orange (labels, dividers, accents) */
+  /* Signal — brand orange */
   --signal: #f36b1c;
-  --signal-strong: #ff8533;
+  --signal-strong: #ff8a3d;
 
-  /* Clean — white / soft white */
-  --ink: #ffffff;
-  --muted: #b7c3d9;
+  /* Clean — white / cool mist */
+  --ink: #f7f9ff;
+  --muted: #9eb0cc;
+
+  /* Soft fills for cards / inputs */
+  --glow-action: rgba(225, 22, 2, 0.22);
+  --glow-signal: rgba(243, 107, 28, 0.18);
+  --glow-cool: rgba(90, 140, 220, 0.12);
 
   /* Keep legacy aliases used by existing utility classes */
   --gold: var(--action);
   --gold-strong: var(--action-strong);
-  --mist: #d7e6ff;
+  --mist: #d4e2ff;
   --danger: #ff8b7b;
   --text: var(--ink);
 }
@@ -54,20 +59,22 @@ html {
 
 body {
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(243, 107, 28, 0.12), transparent 55%),
-    radial-gradient(900px 500px at 10% 20%, rgba(225, 22, 2, 0.1), transparent 50%),
-    var(--bg);
+    radial-gradient(1000px 520px at 85% -8%, var(--glow-signal), transparent 58%),
+    radial-gradient(820px 480px at 8% 18%, var(--glow-action), transparent 52%),
+    radial-gradient(700px 420px at 50% 110%, var(--glow-cool), transparent 55%),
+    linear-gradient(180deg, #07162c 0%, var(--bg) 42%, var(--depth) 100%);
   color: var(--ink);
   font-family: var(--font-outfit), system-ui, sans-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--action) 40%, transparent);
+  background: color-mix(in srgb, var(--action) 45%, transparent);
   color: var(--ink);
 }
 
 .font-display {
   font-family: var(--font-syne), var(--font-outfit), sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .grain {
@@ -79,15 +86,47 @@ body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.14;
+  opacity: 0.1;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .panel {
-  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
-  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-elevated) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 85%, var(--signal) 15%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(18px);
+}
+
+.btn-action {
+  background: var(--action);
+  color: #ffffff;
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.btn-action:hover {
+  background: var(--action-strong);
+  box-shadow: 0 8px 28px var(--glow-action);
+}
+
+.surface-card {
+  background: color-mix(in srgb, var(--bg-elevated) 92%, #0e2448);
+  border: 1px solid var(--line);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.surface-card:hover {
+  border-color: color-mix(in srgb, var(--signal) 45%, var(--line));
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .skip-link {
