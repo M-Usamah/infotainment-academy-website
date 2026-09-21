@@ -10,13 +10,12 @@ export function SiteFooter() {
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt={`${site.name} logo`}
-              width={44}
-              height={44}
-              className="h-11 w-11 rounded-full bg-white object-contain p-0.5"
+              width={160}
+              height={146}
+              className="h-14 w-auto rounded-md bg-white object-contain p-1.5"
             />
-            <p className="font-display text-2xl">{site.name}</p>
           </div>
           <p className="mt-3 max-w-xs text-sm leading-6 text-muted">
             {site.tagline}. Games, spatial experiences, and architectural worlds from one studio.

@@ -18,14 +18,14 @@ export function SiteHeader() {
           className="panel flex items-center gap-2 rounded-full px-2.5 py-2 text-sm font-semibold tracking-wide"
         >
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-full object-contain bg-white p-0.5"
+            width={140}
+            height={128}
+            className="h-11 w-auto rounded-md bg-white object-contain p-1"
             priority
           />
-          <span className="font-display pr-1">{site.name}</span>
+          <span className="sr-only">{site.name}</span>
         </Link>
 
         <nav className="panel hidden items-center gap-1 rounded-full px-2 py-2 lg:flex">
