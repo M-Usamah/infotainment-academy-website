@@ -17,9 +17,9 @@ export function SiteHeader() {
           <Image
             src="/logo-mark-light.png"
             alt=""
-            width={112}
-            height={112}
-            className="h-11 w-11 object-contain sm:h-12 sm:w-12"
+            width={128}
+            height={128}
+            className="h-12 w-12 object-contain sm:h-14 sm:w-14"
             priority
           />
           <span className="font-display text-sm leading-tight font-semibold tracking-tight text-ink sm:text-base">

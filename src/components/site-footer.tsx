@@ -8,16 +8,16 @@ export function SiteFooter() {
     <footer className="border-t border-line bg-depth/90 px-4 py-16 sm:px-6">
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="inline-block">
             <Image
-              src="/logo.png"
+              src="/logo-light.png"
               alt={`${site.name} logo`}
-              width={200}
-              height={180}
-              className="h-16 w-auto rounded-2xl bg-white object-contain p-2"
+              width={320}
+              height={290}
+              className="h-28 w-auto object-contain sm:h-32"
             />
-          </div>
-          <p className="mt-3 max-w-xs text-sm leading-6 text-muted">
+          </Link>
+          <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
             {site.tagline}. Games, spatial experiences, and architectural worlds from one studio.
           </p>
         </div>
