@@ -55,6 +55,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Syne defaults to old-style figures, which drop below the baseline ("Unreal 5", "4–6").
+     Lining figures keep digits level with capitals everywhere. */
+  font-variant-numeric: lining-nums;
 }
 
 body {
