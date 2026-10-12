@@ -10,7 +10,7 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent" />
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-20 pt-36 sm:px-6">
         <p className="text-sm tracking-[0.35em] text-signal uppercase">Infotainment Academy</p>
-        <h1 className="font-display mt-4 max-w-4xl text-5xl leading-[0.95] font-semibold text-balance text-ink sm:text-7xl">
+        <h1 className="font-display mt-4 max-w-4xl text-5xl leading-[1.05] font-semibold text-balance text-ink sm:text-7xl">
           {site.tagline}.
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-muted">

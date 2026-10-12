@@ -33,7 +33,7 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
       </p>
       <h1 className="font-display mt-4 text-5xl font-semibold text-white">{job.title}</h1>
       <p className="mt-5 text-lg text-muted">{job.summary}</p>
-      <h2 className="font-display mt-10 text-2xl text-white">What you will do</h2>
+      <h2 className="font-title mt-10 text-2xl text-white">What you will do</h2>
       <ul className="mt-4 grid gap-3 text-muted">
         {job.duties.map((duty) => (
           <li key={duty} className="border-b border-line pb-3">

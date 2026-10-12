@@ -21,13 +21,13 @@ export default function AboutPage() {
       />
       <section className="mx-auto grid max-w-7xl gap-8 px-4 pb-20 sm:px-6 lg:grid-cols-2">
         <article className="rounded-[1.5rem] border border-line bg-elevated p-8">
-          <h2 className="font-display text-3xl">Vision</h2>
+          <h2 className="font-title text-3xl">Vision</h2>
           <p className="mt-4 leading-7 text-muted">
             Make Pakistan a trusted source of high-end PC game development.
           </p>
         </article>
         <article className="rounded-[1.5rem] border border-line bg-elevated p-8">
-          <h2 className="font-display text-3xl">Mission</h2>
+          <h2 className="font-title text-3xl">Mission</h2>
           <p className="mt-4 leading-7 text-muted">
             Deliver Unreal work that is on time, honest about scope and built to the client&apos;s
             brief.
@@ -43,7 +43,7 @@ export default function AboutPage() {
               className="flex flex-col items-center rounded-[1.5rem] border border-line bg-elevated p-6 text-center"
             >
               <TeamAvatar member={member} />
-              <h3 className="font-display mt-5 text-xl">{member.name}</h3>
+              <h3 className="font-title mt-5 text-xl">{member.name}</h3>
               <p className="mt-1 text-sm text-signal">{member.role}</p>
             </li>
           ))}

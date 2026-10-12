@@ -47,7 +47,7 @@ export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
             </div>
             <div className="p-5">
               <p className="text-xs tracking-[0.2em] text-signal uppercase">{project.category}</p>
-              <h3 className="font-display mt-2 text-2xl">{project.title}</h3>
+              <h3 className="font-title mt-2 text-2xl">{project.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{project.summary}</p>
               {project.category === "Ready codebase" ? (
                 <p className="mt-3 text-sm text-action">{project.client}</p>

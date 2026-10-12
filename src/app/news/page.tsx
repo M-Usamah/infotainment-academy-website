@@ -31,7 +31,7 @@ export default function NewsPage() {
               <p className="text-xs text-muted">
                 {article.author} · {article.date}
               </p>
-              <h2 className="font-display mt-2 text-2xl">{article.title}</h2>
+              <h2 className="font-title mt-2 text-2xl">{article.title}</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{article.excerpt}</p>
             </div>
           </Link>

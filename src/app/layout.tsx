@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Outfit, Sora } from "next/font/google";
 import { CookieBanner } from "@/components/cookie-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -12,9 +12,9 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const syne = Syne({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-sora",
   display: "swap",
 });
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${syne.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${sora.variable}`}>
       <body className="min-h-screen bg-bg text-ink antialiased">
         <a className="skip-link" href="#main">
           Skip to content

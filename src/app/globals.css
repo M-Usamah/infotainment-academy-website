@@ -50,13 +50,12 @@
   --color-muted: var(--muted);
   --color-danger: var(--danger);
   --font-sans: var(--font-outfit);
-  --font-display: var(--font-syne);
+  --font-display: var(--font-sora);
 }
 
 html {
   scroll-behavior: smooth;
-  /* Syne defaults to old-style figures, which drop below the baseline ("Unreal 5", "4–6").
-     Lining figures keep digits level with capitals everywhere. */
+  /* Keep digits level with capitals ("Unreal 5", "4–6") in every font. */
   font-variant-numeric: lining-nums;
 }
 
@@ -75,12 +74,18 @@ body {
   color: var(--ink);
 }
 
-/* In the components layer so `tracking-*` utilities can still tighten large headings.
-   Syne's wide letters collide at card-title sizes with negative tracking. */
+/* In the components layer so `tracking-*` utilities can still adjust headings. */
 @layer components {
   .font-display {
-    font-family: var(--font-syne), var(--font-outfit), sans-serif;
-    letter-spacing: 0.01em;
+    font-family: var(--font-sora), var(--font-outfit), sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* Card-size titles: the display face at a heavier weight. */
+  .font-title {
+    font-family: var(--font-sora), var(--font-outfit), sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -148,7 +153,7 @@ body {
 }
 
 .figure {
-  /* Syne uses old-style figures; numbers need even, aligned digits. */
+  /* Stats and step numbers: even, aligned digits. */
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-variant-numeric: lining-nums tabular-nums;
   font-weight: 600;

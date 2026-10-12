@@ -45,7 +45,7 @@ export default function CareersPage() {
           {academyPath.map((item, index) => (
             <li key={item.stage} className="rounded-[1.5rem] border border-line bg-elevated p-8">
               <p className="figure text-3xl text-signal">0{index + 1}</p>
-              <h3 className="font-display mt-3 text-2xl">{item.stage}</h3>
+              <h3 className="font-title mt-3 text-2xl">{item.stage}</h3>
               <p className="mt-3 text-sm leading-7 text-muted">{item.body}</p>
             </li>
           ))}
@@ -67,7 +67,7 @@ export default function CareersPage() {
             className="flex flex-col justify-between gap-4 rounded-[1.5rem] border border-line bg-elevated p-8 md:flex-row md:items-center"
           >
             <div>
-              <h2 className="font-display text-3xl">{job.title}</h2>
+              <h2 className="font-title text-3xl">{job.title}</h2>
               <p className="mt-2 text-sm text-muted">
                 {job.location} · {job.type}
               </p>

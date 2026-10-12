@@ -24,7 +24,7 @@ export function ServiceCards({ showHeading = true }: { showHeading?: boolean }) 
               <div className="flex flex-col justify-between p-8">
                 <div>
                   <p className="text-xs tracking-[0.24em] text-signal uppercase">{service.kicker}</p>
-                  <h3 className="font-display mt-3 text-3xl">{service.title}</h3>
+                  <h3 className="font-title mt-3 text-3xl">{service.title}</h3>
                   <p className="mt-3 max-w-xl text-muted">{service.summary}</p>
                 </div>
                 <span className="mt-8 text-sm text-action">Learn more →</span>

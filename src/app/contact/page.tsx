@@ -18,7 +18,7 @@ export default function ContactPage() {
       />
       <section className="mx-auto grid max-w-7xl gap-10 px-4 pb-24 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded-[1.5rem] border border-line bg-elevated p-8">
-          <h2 className="font-display text-3xl">Studio</h2>
+          <h2 className="font-title text-3xl">Studio</h2>
           <p className="mt-4 text-muted">{site.city}</p>
           <p className="mt-2 text-sm leading-6 text-muted">{site.timezone}</p>
           <p className="mt-4">

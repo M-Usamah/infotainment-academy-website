@@ -13,7 +13,7 @@ export function AdvantageGrid() {
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {advantages.map((item) => (
             <article key={item.title} className="rounded-[1.5rem] border border-line bg-elevated p-8">
-              <h3 className="font-display text-2xl">{item.title}</h3>
+              <h3 className="font-title text-2xl">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-muted">{item.body}</p>
               <ul className="mt-6 grid gap-2 text-sm text-ink/85">
                 {item.points.map((point) => (
