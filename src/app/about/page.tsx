@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { CtaBand, PageHero } from "@/components/page-hero";
+import { TeamAvatar } from "@/components/team-avatar";
 import { team } from "@/lib/data";
 import { site } from "@/lib/site";
 
@@ -36,26 +36,18 @@ export default function AboutPage() {
       </section>
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
         <h2 className="font-display text-4xl">Core team</h2>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
-            <article key={member.name} className="overflow-hidden rounded-[1.5rem] border border-line bg-elevated">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={member.image}
-                  alt={`Portrait of ${member.name}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="font-display text-2xl">{member.name}</h3>
-                <p className="text-sm text-signal">{member.role}</p>
-                <p className="mt-3 text-sm leading-6 text-muted">{member.bio}</p>
-              </div>
-            </article>
+            <li
+              key={member.name}
+              className="flex flex-col items-center rounded-[1.5rem] border border-line bg-elevated p-6 text-center"
+            >
+              <TeamAvatar member={member} />
+              <h3 className="font-display mt-5 text-xl">{member.name}</h3>
+              <p className="mt-1 text-sm text-signal">{member.role}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
       <CtaBand />
     </>

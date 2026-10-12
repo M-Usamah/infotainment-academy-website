@@ -44,8 +44,8 @@ export type Article = {
 export type TeamMember = {
   name: string;
   role: string;
-  bio: string;
-  image: string;
+  // Optional until real photos are ready; a placeholder silhouette is shown instead.
+  image?: string;
 };
 
 export type Job = {
@@ -232,48 +232,13 @@ export const howWeWork = [
 ] as const;
 
 export const team: TeamMember[] = [
-  {
-    name: "Amara Voss",
-    role: "Creative Director",
-    bio: "Former cinematographer who now directs games and spatial work with the same camera grammar.",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Kenji Okada",
-    role: "Head of Experience",
-    bio: "Ships headset software that does not make people nauseous. Obsessed with locomotion and audio.",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Laila Rahman",
-    role: "Engineering Lead",
-    bio: "Builds the boring parts so the spectacular parts stay up. Unreal Engine gameplay and tools.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Tomas Reeve",
-    role: "Art Director",
-    bio: "Environments first. If the light is wrong, nothing else matters.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Sofia Berg",
-    role: "Executive Producer",
-    bio: "Keeps scope honest. Translates between clients, artists, and the calendar.",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Malik Chen",
-    role: "Spatial Technologist",
-    bio: "Tracking, calibration, and the unglamorous physics of putting pixels in a real room.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-  },
+  { name: "Waqas Wasi", role: "Chief Executive Officer" },
+  { name: "Maheen", role: "Human Resources" },
+  { name: "Mohammed Usamah", role: "Python Developer, Unreal Engine" },
+  { name: "Shariq Waris", role: "3D Modeler" },
+  { name: "Haris", role: "Unreal Developer" },
+  { name: "Aleena Hafeez", role: "Unreal Developer" },
+  { name: "Ahmad Tahseen", role: "Video Editor" },
 ];
 
 export const articles: Article[] = [
