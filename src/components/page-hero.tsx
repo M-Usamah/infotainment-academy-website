@@ -31,7 +31,7 @@ export function PageHero({
       ) : null}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <p className="text-xs tracking-[0.28em] text-signal uppercase">{eyebrow}</p>
-        <h1 className="font-display mt-4 max-w-4xl text-5xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
+        <h1 className="font-display mt-4 max-w-4xl text-5xl font-semibold text-balance text-white sm:text-6xl">
           {title}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">{copy}</p>

@@ -13,7 +13,7 @@ export function PilotOffer() {
       <div className="surface-card mx-auto grid max-w-7xl gap-10 rounded-[2rem] p-8 sm:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <p className="text-xs tracking-[0.28em] text-signal uppercase">Paid pilot</p>
-          <h2 className="font-display mt-3 text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl">
+          <h2 className="font-display mt-3 text-4xl font-semibold text-balance text-ink sm:text-5xl">
             Test us on one Unreal task in 4–6 weeks
           </h2>
           <p className="mt-4 max-w-xl text-base leading-7 text-muted">

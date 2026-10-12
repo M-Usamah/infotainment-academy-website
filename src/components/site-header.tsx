@@ -22,7 +22,7 @@ export function SiteHeader() {
             className="h-12 w-12 object-contain sm:h-14 sm:w-14"
             priority
           />
-          <span className="font-display text-sm leading-tight font-semibold tracking-tight text-ink sm:text-base">
+          <span className="font-display text-sm leading-tight font-semibold text-ink sm:text-base">
             Infotainment
             <span className="block text-signal">Academy</span>
           </span>

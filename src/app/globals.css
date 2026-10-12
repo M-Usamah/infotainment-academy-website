@@ -75,9 +75,13 @@ body {
   color: var(--ink);
 }
 
-.font-display {
-  font-family: var(--font-syne), var(--font-outfit), sans-serif;
-  letter-spacing: -0.02em;
+/* In the components layer so `tracking-*` utilities can still tighten large headings.
+   Syne's wide letters collide at card-title sizes with negative tracking. */
+@layer components {
+  .font-display {
+    font-family: var(--font-syne), var(--font-outfit), sans-serif;
+    letter-spacing: 0.01em;
+  }
 }
 
 .grain {
