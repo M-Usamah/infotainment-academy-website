@@ -4,7 +4,7 @@ import { PortfolioGrid } from "@/components/portfolio-grid";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Selected games, AR/VR, architectural visualization, and product work from Infotainment Academy.",
+  description: "Shogun, our Unreal Engine 5 game, and the shooter and RPG codebases ready to adapt to your brief.",
 };
 
 export default function PortfolioPage() {
@@ -12,8 +12,8 @@ export default function PortfolioPage() {
     <>
       <PageHero
         eyebrow="Portfolio"
-        title="Selected work"
-        copy="Filter by discipline. Every project was built to be played, walked, or stood inside."
+        title="Our work and ready codebases"
+        copy="Our own Unreal Engine 5 game, plus game codebases your project can start from instead of an empty level."
         image="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Esports stage lighting"
       />

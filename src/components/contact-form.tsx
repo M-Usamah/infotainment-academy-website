@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { inquiryTypes } from "@/lib/inquiry-types";
+import { sendToWeb3Forms, type Inquiry } from "@/lib/web3forms";
 
 type FieldErrors = Record<string, string>;
 
@@ -8,6 +10,7 @@ const initial = {
   name: "",
   email: "",
   phone: "",
+  inquiryType: inquiryTypes[0] as string,
   subject: "",
   message: "",
   companyWebsite: "",
@@ -35,6 +38,7 @@ export function ContactForm() {
         error?: string;
         fields?: FieldErrors;
         message?: string;
+        inquiry?: Inquiry;
       };
 
       if (!response.ok) {
@@ -42,6 +46,20 @@ export function ContactForm() {
         setBanner(data.error ?? "Something went wrong.");
         setStatus("error");
         return;
+      }
+
+      // The server validates, sanitizes and rate-limits; the browser then delivers the
+      // cleaned inquiry. No inquiry comes back when the honeypot was filled.
+      if (data.inquiry) {
+        const result = await sendToWeb3Forms(data.inquiry);
+        if (result === "failed") {
+          setBanner("We could not send that right now. Please email us directly.");
+          setStatus("error");
+          return;
+        }
+        if (result === "skipped") {
+          console.warn("[contact] NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is not set; message not sent.");
+        }
       }
 
       setStatus("ok");
@@ -87,6 +105,22 @@ export function ContactForm() {
         value={values.phone}
         onChange={(value) => setValues({ ...values, phone: value })}
       />
+      <label className="grid gap-2 text-sm" htmlFor="inquiry-type">
+        How would you like to start?
+        <select
+          id="inquiry-type"
+          value={values.inquiryType}
+          onChange={(event) => setValues({ ...values, inquiryType: event.target.value })}
+          className="rounded-2xl border border-line bg-depth/40 px-4 py-3 text-base outline-none focus:border-action"
+        >
+          {inquiryTypes.map((type) => (
+            <option key={type} value={type} className="bg-elevated">
+              {type}
+            </option>
+          ))}
+        </select>
+        {errors.inquiryType ? <span className="text-danger">{errors.inquiryType}</span> : null}
+      </label>
       <Field
         label="Subject"
         error={errors.subject}

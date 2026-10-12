@@ -47,10 +47,10 @@ export function CtaBand() {
         <div>
           <p className="text-xs tracking-[0.28em] text-signal uppercase">Start a conversation</p>
           <h2 className="font-display mt-3 max-w-xl text-4xl font-semibold text-white">
-            Got an idea? Send the first scene.
+            Have an Unreal task for us?
           </h2>
           <p className="mt-4 max-w-lg text-muted">
-            A free strategy call. No deck required. Tell us the world, the audience, and the deadline.
+            Start with a paid pilot: one task, 4–6 weeks, fixed scope. Tell us the brief and the deadline.
           </p>
         </div>
         <Link

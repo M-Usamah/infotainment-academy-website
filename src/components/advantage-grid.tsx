@@ -6,9 +6,9 @@ export function AdvantageGrid() {
     <section className="px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Business advantage"
-          title="AR and games as working tools"
-          copy="Not future-tech theater. Training, demos, venues, and products that have to perform on opening day."
+          eyebrow="Why Infotainment Academy"
+          title="Unreal capacity without the hiring cycle"
+          copy="A team in Lahore that works in your tools, your hours, and your standards."
         />
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {advantages.map((item) => (

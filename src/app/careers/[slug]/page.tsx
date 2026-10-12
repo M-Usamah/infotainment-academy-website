@@ -43,8 +43,8 @@ export default async function JobPage({ params }: { params: Promise<Params> }) {
       </ul>
       <p className="mt-8 text-muted">
         Send a short note and a link to work you are proud of to{" "}
-        <a className="text-action" href={`mailto:${site.email}`}>
-          {site.email}
+        <a className="text-action" href={`mailto:${site.hrEmail}`}>
+          {site.hrEmail}
         </a>
         .
       </p>

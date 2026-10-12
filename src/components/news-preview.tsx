@@ -13,7 +13,7 @@ export function NewsPreview() {
             All news →
           </Link>
         </div>
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
           {articles.map((article) => (
             <Link
               key={article.slug}
@@ -26,7 +26,7 @@ export function NewsPreview() {
                   alt={article.imageAlt}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               <div className="p-6">

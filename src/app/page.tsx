@@ -2,12 +2,13 @@ import { AdvantageGrid } from "@/components/advantage-grid";
 import { ContactForm } from "@/components/contact-form";
 import { CtaBand } from "@/components/page-hero";
 import { Hero } from "@/components/hero";
+import { HowWeWork } from "@/components/how-we-work";
 import { NewsPreview } from "@/components/news-preview";
+import { PilotOffer } from "@/components/pilot-offer";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCards } from "@/components/service-cards";
 import { StatsBand } from "@/components/stats-band";
-import { Testimonials } from "@/components/testimonials";
 import { projects } from "@/lib/data";
 import { site } from "@/lib/site";
 
@@ -17,31 +18,36 @@ export default function HomePage() {
       <Hero />
       <ServiceCards />
       <StatsBand />
+      <HowWeWork />
       <section className="px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Our work"
-            title="Explore the portfolio"
-            copy="Games, venues, headsets, and unbuilt buildings—each one meant to be occupied."
+            title="Our game and ready codebases"
+            copy="Shogun, our own Unreal Engine 5 game, and the shooter and RPG codebases your project can start from."
           />
           <div className="mt-10">
-            <PortfolioGrid items={projects.slice(0, 6)} />
+            <PortfolioGrid items={projects} />
           </div>
         </div>
       </section>
       <AdvantageGrid />
-      <Testimonials />
+      <PilotOffer />
       <NewsPreview />
       <section className="px-4 py-24 sm:px-6">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeading
               eyebrow="Get in touch"
-              title="Got an idea? Send a message"
-              copy="Whether you need a custom game, a venue-scale AR overlay, or a building that people can walk before it exists—we will read it."
+              title="Tell us about your game"
+              copy="Share your brief, your engine version, and your timeline. We will reply within one business day."
             />
-            <p className="mt-6 text-sm text-muted">{site.email}</p>
-            <p className="text-sm text-muted">{site.phone}</p>
+            <p className="mt-6 text-sm text-muted">
+              <a className="text-action" href={`mailto:${site.email}`}>
+                {site.email}
+              </a>
+            </p>
+            <p className="text-sm text-muted">{site.city}</p>
           </div>
           <div className="rounded-[1.5rem] border border-line bg-elevated p-8">
             <ContactForm />

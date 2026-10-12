@@ -1,3 +1,5 @@
+import { SHOGUN_CROP_SCALE, SHOGUN_GAMEPLAY_LOOP } from "@/lib/media";
+
 export type Service = {
   slug: string;
   title: string;
@@ -12,13 +14,20 @@ export type Service = {
 export type Project = {
   slug: string;
   title: string;
-  category: "AR/VR" | "Game" | "3D" | "Design" | "Mobile" | "Unreal";
+  category: "Game demo" | "Ready codebase";
   summary: string;
   description: string;
   client: string;
   year: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
+  // cropScale zooms past letterbox bars baked into the footage.
+  video?: {
+    webm: string;
+    mp4: string;
+    cropScale?: number;
+    loop?: { start: number; end: number };
+  };
 };
 
 export type Article = {
@@ -50,287 +59,175 @@ export type Job = {
 
 export const services: Service[] = [
   {
-    slug: "ar-vr",
-    title: "AR / VR Experiences",
-    kicker: "Spatial",
+    slug: "unreal-gameplay-engineering",
+    title: "Unreal Gameplay Engineering",
+    kicker: "Code",
     summary:
-      "Headset, mobile, and venue-scale experiences that put people inside the story.",
+      "C++ and Blueprint gameplay systems for PC games, built to your design docs and coding standards.",
     description:
-      "We design and ship spatial products for training, retail, live events, and entertainment. From first sketch to device store, the work is built to feel inevitable in the user’s hands.",
+      "Our engineers work inside your Unreal Engine 5 project: characters, combat, AI, UI, save systems, and the tools your designers need. We follow your branching, review, and naming rules from the first commit.",
     outcomes: [
-      "Quest, Vision Pro, and WebXR prototypes",
-      "Venue-scale interactive installations",
-      "Spatial UX research and playtesting",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Person wearing a VR headset in a dark studio",
-  },
-  {
-    slug: "game-development",
-    title: "Game Development",
-    kicker: "Play",
-    summary:
-      "Action, simulation, and branded games for consoles, PC, and live audiences.",
-    description:
-      "Infotainment Academy builds original titles and commissioned games with a producer’s eye for scope and a player’s eye for feel. Unity and Unreal pipelines, shipped with telemetry and live-ops in mind.",
-    outcomes: [
-      "Vertical slices and full production",
-      "Multiplayer and event-driven gameplay",
-      "Platform certification support",
+      "Gameplay features in C++ and Blueprints",
+      "AI, combat, and progression systems",
+      "Editor tools that speed up your designers",
     ],
     image:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Esports arena with a glowing stage and crowd",
+    imageAlt: "Gaming stage with dramatic lighting",
   },
   {
-    slug: "3d-interactive",
-    title: "3D Interactive",
-    kicker: "Worlds",
+    slug: "co-development-teams",
+    title: "Co-development Teams",
+    kicker: "Team",
     summary:
-      "Real-time scenes for product reveals, museums, and architectural walkthroughs.",
+      "A dedicated team of 4–5 Unreal developers that plugs into your pipeline and your sprint calendar.",
     description:
-      "If the space has to feel walkable, we build it that way. Photoreal lighting, interaction design, and performant streaming so stakeholders can move through a place before it exists.",
+      "Instead of hiring one contractor at a time, you get a small team that already works together. We join your tools, attend your stand-ups, and report on the same cadence as your in-house team.",
     outcomes: [
-      "Real-time configurators",
-      "Web and kiosk deployments",
-      "Cinematic stills from the same scene",
+      "A team lead as your single point of contact",
+      "Weekly builds and honest progress reports",
+      "Time-zone overlap with Europe and the US",
     ],
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Glass architecture at dusk with city lights",
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Developers reviewing code together at a desk",
   },
   {
-    slug: "game-art",
-    title: "Game Art",
+    slug: "art-technical-art",
+    title: "Art and Technical Art",
     kicker: "Look",
     summary:
-      "Characters, environments, and style frames that hold up in motion.",
+      "Environments, materials, lighting, and the technical art that keeps them running in Unreal.",
     description:
-      "Art direction that survives production. We ship concept, modeling, look-dev, and animation as one conversation so the game does not lose its face halfway through.",
+      "We build assets and scenes to your style guide, then make them work in the engine: material libraries, lighting, Niagara effects, and LODs that hold their look at target frame rates.",
     outcomes: [
-      "Style bibles and production art",
-      "Hero assets and environment kits",
-      "Cinematic trailers and stills",
+      "Environment art and level dressing",
+      "Materials, shaders, and Niagara effects",
+      "Lighting with Lumen or baked setups",
     ],
     image:
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Abstract 3D art with fluid metallic forms",
   },
   {
-    slug: "apps-web",
-    title: "Apps & Web",
-    kicker: "Product",
+    slug: "qa-optimization",
+    title: "QA and Optimization",
+    kicker: "Polish",
     summary:
-      "Companion apps, studio sites, and content platforms that carry the same craft.",
+      "Testing, profiling, and performance work so your PC build runs well on the hardware players own.",
     description:
-      "The experience should not drop in quality when it leaves the headset. We build fast, accessible web and mobile products that match the cinematic work they support.",
+      "We profile with Unreal Insights, cut frame-time spikes, reduce memory use and load times, and run structured test passes with clear bug reports your team can act on.",
     outcomes: [
-      "iOS and Android companions",
-      "Marketing and product sites",
-      "CMS-backed content hubs",
+      "Profiling and frame-time budgets",
+      "Structured test passes and bug reports",
+      "Scalability settings across PC hardware tiers",
     ],
     image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Hands holding a smartphone with a dark interface",
-  },
-  {
-    slug: "archviz",
-    title: "Architectural Visualization",
-    kicker: "Place",
-    summary:
-      "Still, film, and real-time visualization for developers and design firms.",
-    description:
-      "We treat unbuilt space like a film set: light, material, and camera first. The result is work that sells a feeling, not just a floor plan.",
-    outcomes: [
-      "Hero stills and animation",
-      "Interactive unit explorers",
-      "VR site walkthroughs",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Modern interior with warm architectural lighting",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Close-up of a computer circuit board",
   },
 ];
+
+export const alsoOffered = ["AR/VR", "apps and web", "architectural visualization"] as const;
 
 export const projects: Project[] = [
   {
-    slug: "northline-arena",
-    title: "Northline Arena",
-    category: "AR/VR",
-    client: "Pacific League Partners",
-    year: "2026",
-    summary: "A venue-scale mixed-reality overlay for live American football.",
-    description:
-      "Fans see player trails, tactical ghosts, and sponsored moments aligned to the field in real time. Built for stadium LED, broadcast, and headset viewing of the same match.",
-    image:
-      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Floodlit football stadium packed with spectators",
-  },
-  {
-    slug: "ember-circuit",
-    title: "Ember Circuit",
-    category: "Game",
+    slug: "shogun",
+    title: "Shogun",
+    category: "Game demo",
     client: "Infotainment Academy Original",
     year: "2026",
-    summary: "A night-city racer built around handling, heat, and soundtrack.",
+    summary: "Our own Unreal Engine 5 PC game. The gameplay demo plays at the top of the home page.",
     description:
-      "Arcade speed with simulation manners. Ember Circuit is a branded racing title designed for live activations and a consumer Steam release from the same codebase.",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Sports car dashboard at night with neon reflections",
+      "Shogun is built by our team in Unreal Engine 5, from gameplay code to lighting. It shows the quality and the pipeline a client team gets when they work with us.",
+    video: {
+      webm: "/videos/shogen_game_demo.webm?v=20260920b",
+      mp4: "/videos/shogen_game_demo.mp4?v=20260920b",
+      cropScale: SHOGUN_CROP_SCALE,
+      loop: SHOGUN_GAMEPLAY_LOOP,
+    },
   },
   {
-    slug: "halo-of-rooms",
-    title: "Halo of Rooms",
-    category: "3D",
-    client: "Meridian Development",
-    year: "2025",
-    summary: "A real-time walkthrough of a waterfront residential tower.",
+    slug: "shooter-codebase",
+    title: "Shooter Codebase",
+    category: "Ready codebase",
+    client: "Ready to adapt to your brief",
+    year: "2026",
+    summary: "An Unreal Engine shooter codebase with core gameplay systems already in place.",
     description:
-      "Buyers configure finishes and move room to room at 60fps in browser and on Quest. Lighting is physically based so dusk and noon feel like the actual site.",
-    image:
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Luxury living room with floor-to-ceiling windows",
+      "Instead of starting from an empty project, your shooter starts from working code. We adapt the existing systems to your brief, art style, and design, so the first milestone is about your game rather than the basics.",
   },
   {
-    slug: "paper-lantern",
-    title: "Paper Lantern",
-    category: "AR/VR",
-    client: "Harbor Stories",
-    year: "2025",
-    summary: "An AR storybook that unfolds on the living-room floor.",
+    slug: "rpg-codebase",
+    title: "RPG Codebase",
+    category: "Ready codebase",
+    client: "Ready to adapt to your brief",
+    year: "2026",
+    summary: "An Unreal Engine RPG codebase ready to be shaped around your world and mechanics.",
     description:
-      "Children place paper boats, lanterns, and characters in their own space. Built with a calm art direction and parental controls from day one.",
-    image:
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Soft glowing lights in a dark atmospheric scene",
-  },
-  {
-    slug: "drift-protocol",
-    title: "Drift Protocol",
-    category: "Unreal",
-    client: "Northwind Interactive",
-    year: "2025",
-    summary: "A co-op extraction shooter vertical slice in Unreal Engine 5.",
-    description:
-      "Four-player sessions, destructible interiors, and a lighting language that reads at a distance. Delivered as a playable vertical slice for publisher review.",
-    image:
-      "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Gaming setup with neon lighting",
-  },
-  {
-    slug: "night-market",
-    title: "Night Market",
-    category: "Mobile",
-    client: "Kite & Co.",
-    year: "2024",
-    summary: "A tactile cooking game set in a neon street market.",
-    description:
-      "Short sessions, satisfying plating, and a live-ops calendar of seasonal stalls. Shipped on iOS and Android with a shared art pipeline from the 3D team.",
-    image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Night market street food stall with warm lights",
-  },
-  {
-    slug: "echo-garden",
-    title: "Echo Garden",
-    category: "AR/VR",
-    client: "Lumen Health",
-    year: "2024",
-    summary: "A VR wellness space for clinics and at-home headsets.",
-    description:
-      "Breath-paced environments, accessibility-first locomotion, and clinician dashboards. Designed to be calm without feeling empty.",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Misty forest landscape at dawn",
-  },
-  {
-    slug: "signal-house",
-    title: "Signal House",
-    category: "Design",
-    client: "Atelier Voss",
-    year: "2024",
-    summary: "Identity, UI, and motion for a spatial hardware launch.",
-    description:
-      "A complete visual system: product film, configurator UI, and launch site. The interface borrows from instrument panels rather than generic tech templates.",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Abstract technology circuitry close-up",
+      "Core RPG systems are already built. We adapt them to your brief, so your budget goes into what makes your game different.",
   },
 ];
 
-export const projectFilters = [
-  "All",
-  "AR/VR",
-  "Game",
-  "3D",
-  "Design",
-  "Mobile",
-  "Unreal",
-] as const;
+export const projectFilters = ["All", "Game demo", "Ready codebase"] as const;
 
 export const stats = [
-  { value: "80+", label: "Shipped experiences" },
-  { value: "14", label: "Countries reached" },
-  { value: "40", label: "Specialists" },
-  { value: "4.9", label: "Client rating" },
+  { value: "3", label: "Game codebases ready" },
+  { value: "UE5", label: "Unreal Engine 5" },
+  { value: "4–5", label: "Developers per project team" },
+  { value: "4–6 wk", label: "Paid pilot" },
 ] as const;
 
 export const advantages = [
   {
-    title: "For business",
-    body: "Training, product demos, and live events that people remember because they were inside them.",
+    title: "For studios",
+    body: "Add Unreal capacity without a long hiring cycle. You get a team that already works together.",
     points: [
-      "Scoped to a commercial outcome, not a tech demo",
-      "Hardware-agnostic from the first workshop",
-      "Analytics that leadership can actually read",
+      "Starts from ready code, not an empty project",
+      "Works in your tools and your sprint rhythm",
+      "Scales up or down with your milestones",
     ],
   },
   {
     title: "For craft",
-    body: "Art, code, and production sit in the same room. That is how worlds stay coherent under deadline.",
+    body: "Engineering, art, and QA sit in one team, so the build stays coherent under deadline.",
     points: [
-      "Look-dev before feature creep",
-      "Rapid prototypes you can play, not slides",
-      "Pipelines that survive a sequel or a second venue",
+      "Unreal Engine 5 specialists",
+      "Playable builds every week, not slides",
+      "Performance budgets set early and kept",
     ],
   },
   {
-    title: "For enterprise",
-    body: "We plug into existing tools, security reviews, and rollout calendars without slowing the work down.",
+    title: "For producers",
+    body: "Clear scope, honest reporting, and a single point of contact who answers in your working hours.",
     points: [
-      "SSO and private deployments when needed",
+      "Time-zone overlap with Europe and the US",
       "Clear IP and asset handoff",
-      "Support after opening night",
+      "Start small with a paid pilot",
     ],
   },
 ] as const;
 
-export const testimonials = [
+export const howWeWork = [
   {
-    quote:
-      "The Unreal build landed on time and felt finished, not like a prototype wearing a suit. Communication was calm even when the hardware was not.",
-    name: "Helena Park",
-    role: "Head of Brand, Northline",
+    step: "01",
+    title: "Scope",
+    body: "We read your brief, agree on one clear goal, and fix the budget and timeline before work starts.",
   },
   {
-    quote:
-      "Infotainment Academy treated our restaurant activation like a film shoot. Guests stayed longer than the slot we planned for.",
-    name: "Marco Ellison",
-    role: "Owner, Salt & Copper",
+    step: "02",
+    title: "Onboard",
+    body: "The team joins your repository, tools, and channels, and learns your coding and art standards.",
   },
   {
-    quote:
-      "They understood that an AR children’s app has to be delightful and boringly safe. Rare combination.",
-    name: "Priya Menon",
-    role: "Producer, Harbor Stories",
+    step: "03",
+    title: "Build",
+    body: "We work in short sprints with a playable build and a progress report every week.",
   },
   {
-    quote:
-      "Unity work was clean, the art direction held, and nobody disappeared at crunch. We already booked the next season.",
-    name: "Jonah Hale",
-    role: "CEO, Newface Live",
+    step: "04",
+    title: "Deliver",
+    body: "You get the finished work, the source, and the documentation, with a clean IP handoff.",
   },
 ] as const;
 
@@ -352,7 +249,7 @@ export const team: TeamMember[] = [
   {
     name: "Laila Rahman",
     role: "Engineering Lead",
-    bio: "Builds the boring parts so the spectacular parts stay up. Unity, Unreal, and web runtimes.",
+    bio: "Builds the boring parts so the spectacular parts stay up. Unreal Engine gameplay and tools.",
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
   },
@@ -381,92 +278,76 @@ export const team: TeamMember[] = [
 
 export const articles: Article[] = [
   {
-    slug: "spatial-retail-is-a-pacing-problem",
-    title: "Spatial retail is a pacing problem, not a polygon problem",
+    slug: "why-studios-are-moving-to-unreal-5",
+    title: "Why studios are moving to Unreal 5",
     excerpt:
-      "Most AR shopping demos fail because they ask people to wait. Here is how we design for the three-second aisle.",
-    date: "2026-08-12",
-    author: "Amara Voss",
+      "Lumen, Nanite, and a mature toolchain changed what a small PC team can ship. Here is what that means for studios planning their next game.",
+    date: "2026-10-01",
+    author: "Infotainment Academy team",
     image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Retail interior with warm lighting",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Gaming stage with dramatic lighting",
     body: [
-      "The headset is rarely the bottleneck. Attention is. Shoppers will forgive a slightly simpler model if the object appears instantly and behaves like a physical thing.",
-      "We prototype with cardboard and a phone before we touch a high-poly asset. If the beat structure does not work in that crude form, Unreal will not save it.",
-      "The teams that win treat AR as stage direction: entrance, reveal, decision, exit. Everything else is decoration.",
+      "Unreal Engine 5 lowered the cost of high-end visuals. Lumen gives dynamic global illumination without long light bakes, and Nanite lets artists use dense geometry without hand-building every LOD.",
+      "For studios, the bigger change is the hiring market. More developers now learn Unreal first, and more ready-made systems exist, so a project can start from working code instead of an empty level.",
+      "The trade-off is performance. Those features need careful budgets on the PC hardware players actually own, which is why we set frame-time targets in the first week of every project.",
     ],
   },
   {
-    slug: "heat-is-the-new-polygon-budget",
-    title: "Heat is the new polygon budget",
+    slug: "working-with-a-pakistan-based-unreal-team",
+    title: "Working with a Pakistan-based Unreal team",
     excerpt:
-      "GPUs are not running out of triangles. They are running out of thermal headroom. That changes how we build worlds.",
-    date: "2026-07-02",
-    author: "Laila Rahman",
+      "Time zones, communication, and IP: what to expect when you add an Unreal team in Lahore to your production.",
+    date: "2026-09-15",
+    author: "Infotainment Academy team",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Close-up of a computer circuit board",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Team working on laptops around a shared table",
     body: [
-      "A beautiful scene that thermal-throttles in minute four is a failed scene. We budget for sustained frame time, not peak.",
-      "That means aggressive LODs, baked lighting where it does not hurt, and being honest about what needs to be dynamic.",
-      "Players remember smoothness longer than they remember a reflection they saw once.",
-    ],
-  },
-  {
-    slug: "why-our-archviz-starts-with-sound",
-    title: "Why our archviz still starts with sound",
-    excerpt:
-      "A silent apartment is a rendering. A space with air, footsteps, and street bleed is a place people can imagine living.",
-    date: "2026-05-18",
-    author: "Tomas Reeve",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Minimal modern house exterior",
-    body: [
-      "We record the actual site, even if the building is still a hole in the ground. Distant traffic, birds, and HVAC hum do more for belief than another bounce of GI.",
-      "Clients sometimes ask to mute it. We show both versions. They almost never ship the silent one.",
+      "Pakistan Standard Time is UTC+5. A team in Lahore shares the full working day with the UK and Europe, and the morning with the US East Coast, so stand-ups and reviews happen live.",
+      "We work in English, inside your tools, and report every week with a playable build. You always have one team lead who knows the state of every task.",
+      "Code, art, and documentation are delivered with a clear IP handoff. The easiest way to test the fit is a paid pilot: one Unreal task, four to six weeks, with a fixed scope.",
     ],
   },
 ];
 
 export const jobs: Job[] = [
   {
-    slug: "unity-engineer",
-    title: "Unity Engineer",
-    location: "San Francisco / Remote",
+    slug: "unreal-developer",
+    title: "Unreal Developer",
+    location: "Lahore / Remote",
     type: "Full-time",
     summary:
-      "Ship gameplay and spatial features with a small team that cares about frame time.",
+      "Build gameplay systems in Unreal Engine 5 for PC games with a small team that cares about frame time.",
     duties: [
-      "Own features from prototype to store submission",
-      "Profile relentlessly on target hardware",
-      "Collaborate with art on shader and lighting constraints",
+      "Own gameplay features from prototype to release",
+      "Write clean C++ and Blueprints that others can maintain",
+      "Profile on target PC hardware and fix what you find",
     ],
   },
   {
     slug: "technical-artist",
     title: "Technical Artist",
-    location: "San Francisco / Hybrid",
+    location: "Lahore / Hybrid",
     type: "Full-time",
-    summary:
-      "Keep the look of the world intact when it has to run at 90Hz.",
+    summary: "Keep the look of the game intact when it has to run at a stable frame rate.",
     duties: [
-      "Build look-dev and material libraries",
+      "Build materials, shaders, and Niagara effects",
       "Bridge art and engineering on tools",
       "Set performance budgets the team will actually hit",
     ],
   },
   {
-    slug: "producer",
-    title: "Producer",
-    location: "Remote",
+    slug: "video-editor",
+    title: "Video Editor",
+    location: "Lahore",
     type: "Full-time",
     summary:
-      "Protect the work and the people making it. Calendar, clients, and craft in that order.",
+      "Turn gameplay captures into trailers, demo reels, and social clips that show our work well.",
     duties: [
-      "Run weekly production with honesty",
-      "Translate client goals into playable milestones",
-      "Spot scope risk before it becomes overtime",
+      "Capture and edit gameplay footage from Unreal",
+      "Cut trailers and short clips for social channels",
+      "Keep a consistent look across studio videos",
     ],
   },
 ];

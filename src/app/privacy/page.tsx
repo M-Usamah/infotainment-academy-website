@@ -12,10 +12,12 @@ export default function PrivacyPage() {
     <LegalLayout title="Privacy Policy">
       <p>
         {site.name} collects only what you send us. The contact form stores your name, email, optional
-        phone number, subject, and message so a producer can reply. We do not sell personal data.
+        phone number, inquiry type, subject, and message so our team can reply. We do not sell
+        personal data.
       </p>
       <p>
-        Messages are validated and sanitized on the server. We keep inquiry logs only as long as needed
+        Messages are validated and sanitized on our server, then delivered to our inbox by Web3Forms
+        (web3forms.com), an email forwarding service that processes them on our behalf. We keep inquiry logs only as long as needed
         to respond and to protect the form against abuse.
       </p>
       <p>

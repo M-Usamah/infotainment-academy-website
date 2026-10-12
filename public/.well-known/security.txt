@@ -1,4 +1,4 @@
-Contact: mailto:hello@infotainmentacademy.example
+Contact: mailto:support@infotainmentacademy.live
 Expires: 2027-09-18T00:00:00.000Z
 Preferred-Languages: en
-Canonical: https://infotainmentacademy.example/.well-known/security.txt
+Canonical: https://infotainmentacademy.live/.well-known/security.txt

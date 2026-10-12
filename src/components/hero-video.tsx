@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { SHOGUN_CROP_SCALE } from "@/lib/media";
 
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -28,6 +29,7 @@ export function HeroVideo() {
     <video
       ref={videoRef}
       className="absolute inset-0 h-full w-full object-cover"
+      style={{ transform: `scale(${SHOGUN_CROP_SCALE})` }}
       autoPlay
       muted
       loop

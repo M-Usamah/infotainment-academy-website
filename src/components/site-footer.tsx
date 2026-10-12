@@ -18,7 +18,7 @@ export function SiteFooter() {
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
-            {site.tagline}. Games, spatial experiences, and architectural worlds from one studio.
+            {site.tagline}. Based in {site.city}.
           </p>
         </div>
         <div>
@@ -36,7 +36,7 @@ export function SiteFooter() {
         <div>
           <p className="text-xs tracking-[0.2em] text-signal uppercase">Work</p>
           <ul className="mt-4 grid gap-2 text-sm">
-            {services.slice(0, 5).map((service) => (
+            {services.map((service) => (
               <li key={service.slug}>
                 <Link href={`/services/${service.slug}`} className="text-ink/90 hover:text-action">
                   {service.title}

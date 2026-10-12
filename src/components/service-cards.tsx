@@ -1,23 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
-import { services } from "@/lib/data";
+import { alsoOffered, services } from "@/lib/data";
 import { SectionHeading } from "@/components/section-heading";
 
-export function ServiceCards() {
+export function ServiceCards({ showHeading = true }: { showHeading?: boolean }) {
   return (
     <section className="px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="Our services"
-          title="What we make"
-          copy="From headset to stadium, the brief is the same: make it feel real enough to remember."
-        />
-        <div className="mt-12 grid gap-4">
+        {showHeading ? (
+          <SectionHeading
+            eyebrow="Our services"
+            title="What we do"
+            copy="Unreal Engine work for PC games, delivered by one team that knows your pipeline."
+          />
+        ) : null}
+        <div className={`grid gap-4 ${showHeading ? "mt-12" : ""}`}>
           {services.map((service) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="surface-card group grid overflow-hidden rounded-[1.6rem] md:grid-cols-[1.1fr_1fr]"
+              className="surface-card group isolate grid transform-gpu overflow-hidden rounded-[1.6rem] md:grid-cols-[1.1fr_1fr]"
             >
               <div className="flex flex-col justify-between p-8">
                 <div>
@@ -25,9 +27,9 @@ export function ServiceCards() {
                   <h3 className="font-display mt-3 text-3xl">{service.title}</h3>
                   <p className="mt-3 max-w-xl text-muted">{service.summary}</p>
                 </div>
-                <span className="mt-8 text-sm text-action">View projects →</span>
+                <span className="mt-8 text-sm text-action">Learn more →</span>
               </div>
-              <div className="relative min-h-52">
+              <div className="relative min-h-52 overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
@@ -39,6 +41,7 @@ export function ServiceCards() {
             </Link>
           ))}
         </div>
+        <p className="mt-8 text-sm text-muted">Also available on request: {alsoOffered.join(", ")}.</p>
       </div>
     </section>
   );

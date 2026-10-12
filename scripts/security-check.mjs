@@ -4,13 +4,24 @@ const valid = {
   name: "Amara Voss",
   email: "amara@example.com",
   phone: "+14155550100",
-  subject: "New stadium overlay",
-  message: "We need a mixed-reality overlay for opening night in March.",
+  inquiryType: "Start with a paid pilot (4–6 weeks)",
+  subject: "Unreal gameplay pilot",
+  message: "We need help with an Unreal Engine 5 combat system for our PC game.",
   companyWebsite: "",
 };
 
+// Each request gets its own client IP so the per-IP rate limit does not mask other tests.
+// The rate-limit test sets X-Forwarded-For itself, so it shares one bucket.
+const runId = Date.now().toString(36);
+let requestCount = 0;
+
 async function jsonRequest(path, init = {}) {
-  const res = await fetch(base + path, init);
+  const headers = { ...(init.headers ?? {}) };
+  if (!headers["x-forwarded-for"]) {
+    requestCount += 1;
+    headers["x-real-ip"] = `test-${runId}-${requestCount}`;
+  }
+  const res = await fetch(base + path, { ...init, headers });
   let body;
   try {
     body = await res.json();
@@ -74,6 +85,43 @@ async function main() {
   });
   results.push({ test: "non-json 415", pass: ctype.status === 415, status: ctype.status });
 
+  const smuggled = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "text/plain; x=application/json", origin: "http://localhost:3000" },
+    body: JSON.stringify(valid),
+  });
+  results.push({ test: "json-in-parameter content type 415", pass: smuggled.status === 415, status: smuggled.status });
+
+  const crossSite = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", "sec-fetch-site": "cross-site" },
+    body: JSON.stringify(valid),
+  });
+  results.push({ test: "cross-site fetch 403", pass: crossSite.status === 403, status: crossSite.status });
+
+  const badType = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+    body: JSON.stringify({ ...valid, inquiryType: "Something else" }),
+  });
+  results.push({ test: "unknown inquiry type rejected", pass: badType.status === 400, status: badType.status });
+
+  // Chunked body with no Content-Length header must still be capped.
+  const big = JSON.stringify({ ...valid, message: "x".repeat(20_000) });
+  const stream = new ReadableStream({
+    start(controller) {
+      controller.enqueue(new TextEncoder().encode(big));
+      controller.close();
+    },
+  });
+  const chunked = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+    body: stream,
+    duplex: "half",
+  });
+  results.push({ test: "chunked oversized body 413", pass: chunked.status === 413, status: chunked.status });
+
   const honey = await jsonRequest("/api/contact", {
     method: "POST",
     headers: { "content-type": "application/json", origin: "http://localhost:3000" },
@@ -88,11 +136,16 @@ async function main() {
   });
   results.push({ test: "valid inquiry 200", pass: ok.status === 200 && ok.body.ok === true, status: ok.status, body: ok.body });
 
+  // Rotating a spoofed leftmost X-Forwarded-For must not reset the limit.
   let limited = false;
   for (let i = 0; i < 8; i += 1) {
     const r = await jsonRequest("/api/contact", {
       method: "POST",
-      headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+      headers: {
+        "content-type": "application/json",
+        origin: "http://localhost:3000",
+        "x-forwarded-for": `203.0.113.${i}, 127.0.0.1`,
+      },
       body: JSON.stringify({ ...valid, subject: `Rate ${i}` }),
     });
     if (r.status === 429) {
@@ -100,9 +153,30 @@ async function main() {
       break;
     }
   }
-  results.push({ test: "rate limit 429", pass: limited });
+  results.push({ test: "rate limit 429 despite spoofed XFF", pass: limited });
 
-  for (const path of ["/about", "/contact", "/portfolio", "/services", "/news", "/careers", "/privacy"]) {
+  for (const [from, to] of [
+    ["/services/archviz", "/services"],
+    ["/portfolio/northline-arena", "/portfolio"],
+    ["/careers/unity-engineer", "/careers/unreal-developer"],
+  ]) {
+    const res = await fetch(base + from, { redirect: "manual" });
+    const location = res.headers.get("location") || "";
+    results.push({ test: `${from} redirects`, pass: res.status === 308 && location.endsWith(to), status: res.status });
+  }
+
+  for (const path of [
+    "/about",
+    "/contact",
+    "/portfolio",
+    "/portfolio/shogun",
+    "/services",
+    "/services/unreal-gameplay-engineering",
+    "/news",
+    "/careers",
+    "/careers/unreal-developer",
+    "/privacy",
+  ]) {
     const res = await fetch(base + path);
     results.push({ test: `${path} 200`, pass: res.status === 200, status: res.status });
   }

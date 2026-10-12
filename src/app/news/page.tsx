@@ -6,7 +6,7 @@ import { articles } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "News",
-  description: "Notes from the studio on spatial design, games, and production.",
+  description: "Notes from the studio on Unreal Engine, PC game development, and working with a Pakistan-based team.",
 };
 
 export default function NewsPage() {
@@ -15,9 +15,9 @@ export default function NewsPage() {
       <PageHero
         eyebrow="News"
         title="Studio notes"
-        copy="Process, production, and the unglamorous physics of putting pixels in a real room."
+        copy="Unreal Engine, PC game production, and how we work with studios around the world."
       />
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-24 sm:px-6 lg:grid-cols-3">
+      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-24 sm:px-6 lg:grid-cols-2">
         {articles.map((article) => (
           <Link
             key={article.slug}

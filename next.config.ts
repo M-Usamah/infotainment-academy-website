@@ -8,7 +8,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://images.unsplash.com",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' https://api.web3forms.com",
   "media-src 'self' blob:",
   "object-src 'none'",
   "base-uri 'self'",
@@ -46,6 +46,31 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  async redirects() {
+    const oldServices = ["ar-vr", "game-development", "3d-interactive", "game-art", "apps-web", "archviz"];
+    const oldProjects = [
+      "northline-arena",
+      "ember-circuit",
+      "halo-of-rooms",
+      "paper-lantern",
+      "drift-protocol",
+      "night-market",
+      "echo-garden",
+      "signal-house",
+    ];
+    const oldArticles = [
+      "spatial-retail-is-a-pacing-problem",
+      "heat-is-the-new-polygon-budget",
+      "why-our-archviz-starts-with-sound",
+    ];
+    return [
+      ...oldServices.map((slug) => ({ source: `/services/${slug}`, destination: "/services", permanent: true })),
+      ...oldProjects.map((slug) => ({ source: `/portfolio/${slug}`, destination: "/portfolio", permanent: true })),
+      ...oldArticles.map((slug) => ({ source: `/news/${slug}`, destination: "/news", permanent: true })),
+      { source: "/careers/unity-engineer", destination: "/careers/unreal-developer", permanent: true },
+      { source: "/careers/producer", destination: "/careers", permanent: true },
+    ];
   },
   async headers() {
     return [

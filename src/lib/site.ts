@@ -20,14 +20,15 @@ function resolveSiteUrl(): string {
 export const site = {
   name: "Infotainment Academy",
   shortName: "IA",
-  tagline: "Worlds you can step into",
+  tagline: "Unreal Engine PC game development, built in Pakistan for global studios",
   description:
-    "Infotainment Academy builds cinematic games, AR/VR experiences, and architectural worlds for studios, brands, and live events.",
+    "Unreal Engine game development team in Pakistan. Infotainment Academy builds PC games in Unreal Engine 5 for global studios and trains the developers who make them.",
   url: resolveSiteUrl(),
-  email: "hello@infotainmentacademy.example",
-  phone: "+1 (415) 555-0148",
-  address: "Studio 12, Harbor Lofts, San Francisco",
-  founded: 2024,
+  email: "support@infotainmentacademy.live",
+  hrEmail: "hr@infotainmentacademy.live",
+  city: "Lahore, Pakistan",
+  timezone: "PKT (UTC+5): full overlap with UK and European working hours, and US East Coast mornings",
+  founded: 2026,
 } as const;
 
 export const navLinks = [
@@ -41,7 +42,7 @@ export const navLinks = [
 ] as const;
 
 export const socialLinks = [
-  { href: "https://www.linkedin.com", label: "LinkedIn" },
-  { href: "https://www.instagram.com", label: "Instagram" },
-  { href: "https://www.youtube.com", label: "YouTube" },
+  { href: "https://www.linkedin.com/company/infotainment-academy/", label: "LinkedIn" },
+  { href: "https://www.instagram.com/infotainment_academy/", label: "Instagram" },
+  { href: "https://www.facebook.com/share/1FpoTJtogp/", label: "Facebook" },
 ] as const;

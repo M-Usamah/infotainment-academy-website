@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { ProjectMedia } from "@/components/project-media";
 import { projectFilters, projects, type Project } from "@/lib/data";
 
 export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
@@ -36,14 +36,12 @@ export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
           <Link
             key={project.slug}
             href={`/portfolio/${project.slug}`}
-            className="group overflow-hidden rounded-[1.5rem] border border-line bg-elevated"
+            className="group isolate transform-gpu overflow-hidden rounded-[1.5rem] border border-line bg-elevated"
           >
-            <div className="relative aspect-[16/11]">
-              <Image
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
+            <div className="relative aspect-[16/11] overflow-hidden">
+              <ProjectMedia
+                project={project}
+                className="transition duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
@@ -51,6 +49,9 @@ export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
               <p className="text-xs tracking-[0.2em] text-signal uppercase">{project.category}</p>
               <h3 className="font-display mt-2 text-2xl">{project.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{project.summary}</p>
+              {project.category === "Ready codebase" ? (
+                <p className="mt-3 text-sm text-action">{project.client}</p>
+              ) : null}
             </div>
           </Link>
         ))}

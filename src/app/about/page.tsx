@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `The people behind ${site.name}: games, spatial work, and architectural worlds.`,
+  description: `${site.name} is a Pakistani Unreal Engine studio building PC games for global studios. Founded in ${site.founded}.`,
 };
 
 export default function AboutPage() {
@@ -14,8 +14,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title="A studio for worlds that have to hold up in the room"
-        copy={`Founded in ${site.founded}, ${site.name} makes games, AR/VR, and architectural visualization with the same standard: if you can step into it, it has to feel finished.`}
+        title="A Pakistani Unreal studio for global PC games"
+        copy={`${site.name} builds PC games in Unreal Engine and trains the developers who make them. We are a gateway for global studios to Pakistan's Unreal talent. Founded in ${site.founded}.`}
         image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Studio collaborators working around a table"
       />
@@ -23,15 +23,14 @@ export default function AboutPage() {
         <article className="rounded-[1.5rem] border border-line bg-elevated p-8">
           <h2 className="font-display text-3xl">Vision</h2>
           <p className="mt-4 leading-7 text-muted">
-            Interactive entertainment should feel closer to cinema and architecture than to a
-            slideshow. We want rooms, streets, and arenas that people occupy together.
+            Make Pakistan a trusted source of high-end PC game development.
           </p>
         </article>
         <article className="rounded-[1.5rem] border border-line bg-elevated p-8">
           <h2 className="font-display text-3xl">Mission</h2>
           <p className="mt-4 leading-7 text-muted">
-            Ship work that is beautiful under a deadline, honest about scope, and kind to the
-            people who play it. Quality is a production habit, not a mood.
+            Deliver Unreal work that is on time, honest about scope and built to the client&apos;s
+            brief.
           </p>
         </article>
       </section>

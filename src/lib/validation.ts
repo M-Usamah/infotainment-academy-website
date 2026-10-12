@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { inquiryTypes } from "@/lib/inquiry-types";
 
 const MAX_NAME = 80;
 const MAX_SUBJECT = 120;
@@ -36,6 +37,7 @@ export const contactSchema = z
       .regex(/^$|^[+0-9()\s.-]{7,24}$/, "Enter a valid phone number.")
       .optional()
       .or(z.literal("")),
+    inquiryType: z.enum(inquiryTypes, "Choose how you would like to start."),
     subject: text(MAX_SUBJECT),
     message: text(MAX_MESSAGE).min(12, "Tell us a little more about the idea."),
     companyWebsite: z.string().max(200).optional().or(z.literal("")),

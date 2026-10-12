@@ -140,6 +140,15 @@ body {
   box-shadow: 0 8px 28px var(--glow-action);
 }
 
+.figure {
+  /* Syne uses old-style figures; numbers need even, aligned digits. */
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
 .surface-card {
   background: color-mix(in srgb, var(--bg-elevated) 92%, #0e2448);
   border: 1px solid var(--line);

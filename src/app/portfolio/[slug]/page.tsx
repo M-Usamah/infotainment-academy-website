@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/page-hero";
+import { ProjectMedia } from "@/components/project-media";
 import { getProject, projects } from "@/lib/data";
 
 type Params = { slug: string };
@@ -26,19 +26,20 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
   const project = getProject(slug);
   if (!project) notFound();
 
+  const hasMedia = Boolean(project.video || project.image);
+
   return (
     <>
-      <section className="relative isolate min-h-[62vh] overflow-hidden pt-32">
-        <Image
-          src={project.image}
-          alt={project.imageAlt}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-depth/35 to-bg" />
-        <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+      <section
+        className={`relative isolate flex flex-col justify-end overflow-hidden pt-32 ${hasMedia ? "min-h-[70vh]" : ""}`}
+      >
+        {hasMedia ? (
+          <>
+            <ProjectMedia project={project} priority sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-b from-depth/30 via-depth/45 to-bg" />
+          </>
+        ) : null}
+        <div className="relative mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6">
           <p className="text-xs tracking-[0.28em] text-signal uppercase">{project.category}</p>
           <h1 className="font-display mt-4 text-5xl font-semibold text-white">{project.title}</h1>
           <p className="mt-4 text-white/75">
