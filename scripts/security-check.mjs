@@ -99,6 +99,31 @@ async function main() {
   });
   results.push({ test: "cross-site fetch 403", pass: crossSite.status === 403, status: crossSite.status });
 
+  const crlfSubject = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+    body: JSON.stringify({ ...valid, subject: "Hi\r\nBcc: victim@example.com" }),
+  });
+  results.push({ test: "line break in subject rejected", pass: crlfSubject.status === 400, status: crlfSubject.status });
+
+  const crlfName = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+    body: JSON.stringify({ ...valid, name: "Amara\nVoss" }),
+  });
+  results.push({ test: "line break in name rejected", pass: crlfName.status === 400, status: crlfName.status });
+
+  const bidi = await jsonRequest("/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: "http://localhost:3000" },
+    body: JSON.stringify({ ...valid, message: "Please open \u202Egnp.exe from the brief we sent." }),
+  });
+  results.push({
+    test: "bidi override stripped",
+    pass: bidi.status === 200 && !/[\u202A-\u202E\u2066-\u2069]/.test(bidi.body?.inquiry?.message ?? "x\u202E"),
+    status: bidi.status,
+  });
+
   const badType = await jsonRequest("/api/contact", {
     method: "POST",
     headers: { "content-type": "application/json", origin: "http://localhost:3000" },

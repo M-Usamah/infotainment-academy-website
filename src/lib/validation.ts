@@ -19,9 +19,15 @@ const text = (max: number) =>
       message: "That value is not allowed.",
     });
 
+// Fields that end up in email headers (name, subject) or are single-line by nature must
+// not carry line breaks; otherwise a value like "Hi\nBcc: x@y" spans two header lines.
+const NO_LINE_BREAKS = /^[^\r\n]*$/;
+const singleLine = <T extends z.ZodString>(schema: T) =>
+  schema.regex(NO_LINE_BREAKS, "Keep this on one line.");
+
 export const contactSchema = z
   .object({
-    name: text(MAX_NAME).regex(/^[\p{L}\p{M}\s.'-]+$/u, "Use letters in your name."),
+    name: singleLine(text(MAX_NAME)).regex(/^[\p{L}\p{M} .'-]+$/u, "Use letters in your name."),
     email: z
       .string()
       .trim()
@@ -34,11 +40,11 @@ export const contactSchema = z
       .string()
       .trim()
       .max(MAX_PHONE)
-      .regex(/^$|^[+0-9()\s.-]{7,24}$/, "Enter a valid phone number.")
+      .regex(/^$|^[+0-9() .-]{7,24}$/, "Enter a valid phone number.")
       .optional()
       .or(z.literal("")),
     inquiryType: z.enum(inquiryTypes, "Choose how you would like to start."),
-    subject: text(MAX_SUBJECT),
+    subject: singleLine(text(MAX_SUBJECT)),
     message: text(MAX_MESSAGE).min(12, "Tell us a little more about the idea."),
     companyWebsite: z.string().max(200).optional().or(z.literal("")),
   })

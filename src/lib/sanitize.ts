@@ -1,10 +1,14 @@
 const CONTROL = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 const TAGS = /<\/?[^>]+>/g;
+// Bidirectional overrides/isolates can make text display misleadingly in an inbox
+// (e.g. a file name that reads "exe.png" but is "png.exe").
+const BIDI_CONTROLS = /[\u202A-\u202E\u2066-\u2069]/g;
 
 export function sanitizePlainText(value: string, max = 4000): string {
   return value
     .replace(TAGS, "")
     .replace(CONTROL, "")
+    .replace(BIDI_CONTROLS, "")
     .replace(/\r\n?/g, "\n")
     .trim()
     .slice(0, max);
