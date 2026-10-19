@@ -35,3 +35,19 @@ next-env.d.ts
 # os
 .DS_Store
 Thumbs.db
+
+# vercel
+.vercel
+
+# AI assistant and editor local settings (never commit)
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.vscode/
+.idea/
+*.swp
+
+# misc logs and local scratch
+*.log
+*.local

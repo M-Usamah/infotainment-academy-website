@@ -71,9 +71,8 @@ export const services: Service[] = [
       "AI, combat, and progression systems",
       "Editor tools that speed up your designers",
     ],
-    image:
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Gaming stage with dramatic lighting",
+    image: "/images/services/unreal-gameplay-engineering.jpg",
+    imageAlt: "An Infotainment Academy workstation with Unreal Engine work on screen",
   },
   {
     slug: "co-development-teams",
@@ -93,8 +92,8 @@ export const services: Service[] = [
     imageAlt: "Developers reviewing code together at a desk",
   },
   {
-    slug: "art-technical-art",
-    title: "Art and Technical Art",
+    slug: "technical-art",
+    title: "Technical Art",
     kicker: "Look",
     summary:
       "Environments, materials, lighting, and the technical art that keeps them running in Unreal.",
@@ -232,13 +231,15 @@ export const howWeWork = [
 ] as const;
 
 export const team: TeamMember[] = [
-  { name: "Waqas Wasi", role: "Chief Executive Officer" },
-  { name: "Maheen", role: "Human Resources" },
+  { name: "Waqas Wasi", role: "Co-founder & CEO" },
+  { name: "Areej Wasi", role: "Co-founder & COO" },
+  { name: "Maheen Asif", role: "HR" },
+  { name: "Muhammad Haris", role: "Unreal Developer" },
+  { name: "Aleena Hafeez", role: "Unreal Developer" },
   { name: "Mohammed Usamah", role: "Python Developer, Unreal Engine" },
   { name: "Shariq Waris", role: "3D Modeler" },
-  { name: "Haris", role: "Unreal Developer" },
-  { name: "Aleena Hafeez", role: "Unreal Developer" },
-  { name: "Ahmad Tahseen", role: "Video Editor" },
+  { name: "Habiba Noor", role: "Content Writer" },
+  { name: "Ubaid Raza", role: "Video Editor" },
 ];
 
 export const articles: Article[] = [

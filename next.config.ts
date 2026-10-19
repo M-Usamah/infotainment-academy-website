@@ -68,6 +68,7 @@ const nextConfig: NextConfig = {
       ...oldServices.map((slug) => ({ source: `/services/${slug}`, destination: "/services", permanent: true })),
       ...oldProjects.map((slug) => ({ source: `/portfolio/${slug}`, destination: "/portfolio", permanent: true })),
       ...oldArticles.map((slug) => ({ source: `/news/${slug}`, destination: "/news", permanent: true })),
+      { source: "/services/art-technical-art", destination: "/services/technical-art", permanent: true },
       { source: "/careers/unity-engineer", destination: "/careers/unreal-developer", permanent: true },
       { source: "/careers/producer", destination: "/careers", permanent: true },
     ];

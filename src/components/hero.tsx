@@ -9,8 +9,12 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-depth/50 via-bg/60 to-bg" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent" />
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-4 pb-20 pt-36 sm:px-6">
-        <p className="text-sm tracking-[0.35em] text-signal uppercase">Infotainment Academy</p>
-        <h1 className="font-display mt-4 max-w-4xl text-5xl leading-[1.05] font-semibold text-balance text-ink sm:text-7xl">
+        <p className="text-xs tracking-[0.3em] text-signal uppercase sm:text-sm">
+          Infotainment Academy
+          <span className="text-ink/70"> in collaboration with </span>
+          2 AA Studios
+        </p>
+        <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.1] font-semibold text-balance text-ink sm:text-5xl lg:text-6xl">
           {site.tagline}.
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-8 text-muted">

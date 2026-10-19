@@ -36,7 +36,7 @@ export default function AboutPage() {
       </section>
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
         <h2 className="font-display text-4xl">Core team</h2>
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member) => (
             <li
               key={member.name}

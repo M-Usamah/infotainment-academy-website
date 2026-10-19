@@ -18,7 +18,7 @@ export function SiteFooter() {
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
-            {site.tagline}. Based in {site.city}.
+            Unreal Engine PC game development for global studios. Based in {site.city}.
           </p>
         </div>
         <div>
