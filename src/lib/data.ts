@@ -44,7 +44,7 @@ export type Article = {
 export type TeamMember = {
   name: string;
   role: string;
-  // Optional until real photos are ready; a placeholder silhouette is shown instead.
+  // Optional; a placeholder silhouette is shown when unset.
   image?: string;
 };
 
@@ -231,15 +231,15 @@ export const howWeWork = [
 ] as const;
 
 export const team: TeamMember[] = [
-  { name: "Waqas Wasi", role: "Co-founder & CEO" },
-  { name: "Areej Wasi", role: "Co-founder & COO" },
-  { name: "Maheen Asif", role: "HR" },
-  { name: "Muhammad Haris", role: "Unreal Developer" },
-  { name: "Aleena Hafeez", role: "Unreal Developer" },
-  { name: "Mohammed Usamah", role: "Python Developer, Unreal Engine" },
-  { name: "Shariq Waris", role: "3D Modeler" },
-  { name: "Habiba Noor", role: "Content Writer" },
-  { name: "Ubaid Raza", role: "Video Editor" },
+  { name: "Waqas Wasi", role: "Co-founder & CEO", image: "/images/team/avatar-a.webp" },
+  { name: "Areej Wasi", role: "Co-founder & COO", image: "/images/team/avatar-b.webp" },
+  { name: "Maheen Asif", role: "HR", image: "/images/team/avatar-b.webp" },
+  { name: "Muhammad Haris", role: "Unreal Developer", image: "/images/team/avatar-a.webp" },
+  { name: "Aleena Hafeez", role: "Unreal Developer", image: "/images/team/avatar-b.webp" },
+  { name: "Mohammed Usamah", role: "Python Developer, Unreal Engine", image: "/images/team/avatar-a.webp" },
+  { name: "Shariq Waris", role: "3D Modeler", image: "/images/team/avatar-a.webp" },
+  { name: "Habiba Noor", role: "Content Writer", image: "/images/team/avatar-b.webp" },
+  { name: "Ubaid Raza", role: "Video Editor", image: "/images/team/avatar-a.webp" },
 ];
 
 export const articles: Article[] = [

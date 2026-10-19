@@ -5,13 +5,14 @@ import type { TeamMember } from "@/lib/data";
 export function TeamAvatar({ member }: { member: TeamMember }) {
   if (member.image) {
     return (
-      <div className="relative size-24 overflow-hidden rounded-2xl">
+      <div className="relative size-28 overflow-hidden rounded-full ring-2 ring-line">
+        {/* The artwork has its own drawn frame; zoom past it to a clean circle. */}
         <Image
           src={member.image}
-          alt={`Portrait of ${member.name}`}
+          alt={`${member.name} avatar`}
           fill
-          className="object-cover"
-          sizes="96px"
+          className="scale-[1.3] object-cover object-[50%_45%]"
+          sizes="112px"
         />
       </div>
     );
