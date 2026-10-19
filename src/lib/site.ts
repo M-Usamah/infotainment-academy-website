@@ -8,7 +8,9 @@ function resolveSiteUrl(): string {
     }
   }
 
-  const vercel = process.env.VERCEL_URL?.trim();
+  // VERCEL_URL is unique per deployment; prefer the stable production domain.
+  const vercel =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() || process.env.VERCEL_URL?.trim();
   if (vercel) {
     const host = vercel.replace(/^https?:\/\//, "");
     return `https://${host}`;
